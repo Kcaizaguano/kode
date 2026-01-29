@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta Digital | KODE</title>
+    <link rel="icon" href="images/letter-k_15403260.png" type="image/x-icon">
+    <link rel="stylesheet" href="business-card.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="business-card" data-qr-url="https://kode-sitios-web.web.app/index.html">
+        <div class="card-header">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="KODE Logo">
+            </div>
+            <h1 class="company-name">KODE</h1>
+            <p class="tagline">Innovación Digital</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="contact-text">+593 997 251 729</div>
+                <button class="copy-btn" onclick="copyToClipboard('+593997251729')" title="Copiar">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contact-text">corporacionkode@gmail.com</div>
+                <button class="copy-btn" onclick="copyToClipboard('corporacionkode@gmail.com')" title="Copiar">
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="contact-text">kode-sitios-web.web.app</div>
+                <a href="https://kode-sitios-web.web.app" target="_blank" class="action-icon" title="Visitar sitio">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="contact-text">Ecuador</div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Ecuador" target="_blank" class="action-icon" title="Ver en Google Maps">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <!-- <a href="https://api.whatsapp.com/send/?phone=593997251729" target="_blank" class="social-btn" title="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a> -->
+            <a href="https://www.facebook.com/tu_pagina" target="_blank" class="social-btn" title="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-btn" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <!-- <a href="https://kode-sitios-web.web.app" target="_blank" class="social-btn" title="Sitio Web">
+                <i class="fa-solid fa-link"></i>
+            </a> -->
+            <a href="https://kode-sitios-web.web.app" target="_blank" class="social-btn" title="Sitio Web">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+
+        <div class="action-buttons">
+            <a href="https://api.whatsapp.com/send/?phone=593997251729&text=Hola%20quiero%20una%20asesor%C3%ADa" target="_blank" class="action-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Contactar por WhatsApp
+            </a>
+        </div>
+
+        <div class="qr-section">
+            <button class="qr-toggle" onclick="toggleQR()">
+                <i class="fa-solid fa-qrcode"></i>
+                <span>Compartir Contacto QR</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal QR -->
+    <div class="qr-modal" id="qr-modal">
+        <div class="qr-dialog">
+            <button class="qr-close" onclick="closeQR()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="qr-dialog-header">
+                <h3>Código QR</h3>
+                <p>Escanea para acceder a esta tarjeta</p>
+            </div>
+            
+            <div class="qr-code-container" id="qr-code-container">
+                <!-- El QR se genera aquí automáticamente -->
+            </div>
+            
+            <div class="qr-dialog-footer">
+                <div class="qr-info">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span>Usa la cámara de tu teléfono</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="business-card.js"></script>
+</body>
+</html>

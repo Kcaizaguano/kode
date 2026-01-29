@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta Digital | Ejemplo URL Personalizada</title>
+    <link rel="icon" href="images/letter-k_15403260.png" type="image/x-icon">
+    <link rel="stylesheet" href="business-card.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- PERSONALIZACIÓN DE COLORES -->
+    <style>
+        :root {
+            --card-primary: #FF6B6B;
+            --card-secondary: #FFD93D;
+            --card-bg-dark: #2C3E50;
+            --card-bg-medium: #34495E;
+            --card-bg-light: #455A64;
+        }
+    </style>
+</head>
+<body>
+    <div class="business-card">
+        <div class="card-header">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo">
+            </div>
+            <h1 class="company-name">MI EMPRESA</h1>
+            <p class="tagline">Ejemplo con URL Personalizada</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="contact-text">+593 999 999 999</div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contact-text">contacto@ejemplo.com</div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="contact-text">www.ejemplo.com</div>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="#" target="_blank" class="social-btn" title="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="#" target="_blank" class="social-btn" title="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#" target="_blank" class="social-btn" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+
+        <div class="action-buttons">
+            <a href="#" target="_blank" class="action-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Contactar por WhatsApp
+            </a>
+            <a href="/" class="action-btn secondary">
+                <i class="fa-solid fa-house"></i>
+                Ver Sitio Web
+            </a>
+        </div>
+
+        <div class="qr-section">
+            <button class="qr-toggle" onclick="toggleQR()">
+                <i class="fa-solid fa-qrcode"></i>
+                <span>Mostrar Código QR</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal QR -->
+    <div class="qr-modal" id="qr-modal">
+        <div class="qr-dialog">
+            <button class="qr-close" onclick="closeQR()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="qr-dialog-header">
+                <h3>Código QR</h3>
+                <p>Escanea para acceder</p>
+            </div>
+            
+            <div class="qr-code-container">
+                <img id="qr-image" src="" alt="Código QR">
+            </div>
+            
+            <div class="qr-dialog-footer">
+                <div class="qr-info">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <span>Usa la cámara de tu teléfono</span>
+                </div>
+                <button class="qr-download-btn" onclick="downloadQR()">
+                    <i class="fa-solid fa-download"></i>
+                    Descargar QR
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    
+    <!-- SCRIPT CON URL PERSONALIZADA -->
+    <script>
+        // ========== CONFIGURA TU URL AQUÍ ==========
+        const QR_URL = "https://www.dbsdigital.co/wp-content/uploads/2025/04/Mockup_BSeCard_Header_02.png";
+        
+        // ========== NO MODIFICAR ABAJO ==========
+        function toggleQR() {
+            const modal = document.getElementById('qr-modal');
+            const qrImage = document.getElementById('qr-image');
+            
+            modal.classList.add('active');
+            
+            if (!qrImage.src || qrImage.src === window.location.href) {
+                generateQR(QR_URL);
+            }
+        }
+
+        function generateQR(url) {
+            const qrImage = document.getElementById('qr-image');
+            
+            QRCode.toDataURL(url, {
+                width: 220,
+                margin: 2,
+                color: {
+                    dark: '#070a2a',
+                    light: '#ffffff'
+                }
+            }, function(err, dataUrl) {
+                if (!err) {
+                    qrImage.src = dataUrl;
+                }
+            });
+        }
+
+        function closeQR() {
+            const modal = document.getElementById('qr-modal');
+            modal.classList.remove('active');
+        }
+
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('qr-modal');
+            if (e.target === modal) {
+                closeQR();
+            }
+        });
+
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeQR();
+            }
+        });
+
+        function downloadQR() {
+            const qrImage = document.getElementById('qr-image');
+            const link = document.createElement('a');
+            link.download = 'codigo-qr.png';
+            link.href = qrImage.src;
+            link.click();
+        }
+    </script>
+</body>
+</html>
